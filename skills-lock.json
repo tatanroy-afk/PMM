@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "skills": {
+    "battle-card": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "1b48bdacd0d14aa675da29264c7b54b77f6299535c1322d507fe571712157fcc"
+    },
+    "competitive-landing-page": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "52214b573bbb901abd614b5ab28e038d5105c3af1454db2c9d3b6a48c7fbfb39"
+    },
+    "feature-announcement": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "542c311adb8159bb3ece31d6d7f784894139c25a1d8969f0e0c641cf3874a7f2"
+    },
+    "icp-definition": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "16d109bbef8a222f3c66263ddc082a315e811c7150528ab3f6906b05ab747a03"
+    },
+    "launch-brief": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "33c90b6b16c829e505ab6a14f276f2f51381430ea43d5ccbb0b775fc246ce516"
+    },
+    "message-market-fit": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "fbca2a3f9c52ba67ae1fceac1806ac016b7eee8288350abe3f74edbc345232ca"
+    },
+    "messaging-hierarchy": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "713c014f8d421809383c5b484b9878ff7269469b532eb36e18d8c9505431a339"
+    },
+    "positioning-audit": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "e75d756cbc68d60f9334e81ffac3a30d99235fcc0ad480a69dd5a4a19ae604e8"
+    },
+    "sales-narrative": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "339ee033efc457ad63907621bd4fa9267e0dc71a43d001f209fdace8bba18b4c"
+    },
+    "voc-synthesis": {
+      "source": "Fearofsnakes/pmm-skillset",
+      "sourceType": "github",
+      "computedHash": "593bb90ba75ab23deb3bf3af7abc6592f63d87e0ea03cac122a380424f0fee41"
+    }
+  }
+}
