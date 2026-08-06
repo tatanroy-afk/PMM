@@ -1,0 +1,2178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>WOW Automotive — Executive Pitch Storyboard</title>
+<meta name="description" content="Interactive storyboard of the SAP executive pitch to WOW Automotive: rebuilding trust, embedding AI in the planner's work, and the €140m/yr value case." />
+<style>
+/* ─────────────────────────────────────────────────────────────
+   WOW Automotive · Executive Pitch Storyboard
+   Palette: SAP Horizon hues on blue-biased neutrals.
+   Chart hues validated (OKLCH band / chroma / CVD ΔE / contrast)
+   light  #E76500 · #0070F2 · #107E3E   on #FFFFFF
+   dark   #D4761C · #3D97F5 · #2FA05E   on #0B1730
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --f-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --f-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --f-data: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+
+  --ground: #ffffff;
+  --panel: #f1f5fa;
+  --panel-2: #e6edf6;
+  --rule: #d3dce8;
+  --rule-soft: #e6ecf4;
+  --ink: #00144a;
+  --ink-2: #2b3f60;
+  --ink-3: #55657d;
+
+  --blue: #0070f2;
+  --blue-ink: #0058c0;
+  --blue-wash: #e8f2ff;
+  --amber: #e76500;
+  --amber-ink: #b74f00;
+  --amber-wash: #fdf0e4;
+  --green: #107e3e;
+  --green-ink: #0c6431;
+  --green-wash: #e6f4ec;
+
+  --shadow: 0 1px 2px rgba(0,20,74,.06), 0 8px 24px -12px rgba(0,20,74,.18);
+  --stage-max: 1180px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0b1730;
+    --panel: #132340;
+    --panel-2: #1a2d50;
+    --rule: #26385c;
+    --rule-soft: #1d2f52;
+    --ink: #eaf1fb;
+    --ink-2: #c2d1e6;
+    --ink-3: #8fa2bf;
+
+    --blue: #3d97f5;
+    --blue-ink: #79b6ff;
+    --blue-wash: #12294b;
+    --amber: #d4761c;
+    --amber-ink: #f0a256;
+    --amber-wash: #2c2013;
+    --green: #2fa05e;
+    --green-ink: #5cc286;
+    --green-wash: #11291d;
+
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0b1730;
+  --panel: #132340;
+  --panel-2: #1a2d50;
+  --rule: #26385c;
+  --rule-soft: #1d2f52;
+  --ink: #eaf1fb;
+  --ink-2: #c2d1e6;
+  --ink-3: #8fa2bf;
+  --blue: #3d97f5;
+  --blue-ink: #79b6ff;
+  --blue-wash: #12294b;
+  --amber: #d4761c;
+  --amber-ink: #f0a256;
+  --amber-wash: #2c2013;
+  --green: #2fa05e;
+  --green-ink: #5cc286;
+  --green-wash: #11291d;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+:root[data-theme="light"] {
+  --ground: #ffffff;
+  --panel: #f1f5fa;
+  --panel-2: #e6edf6;
+  --rule: #d3dce8;
+  --rule-soft: #e6ecf4;
+  --ink: #00144a;
+  --ink-2: #2b3f60;
+  --ink-3: #55657d;
+  --blue: #0070f2;
+  --blue-ink: #0058c0;
+  --blue-wash: #e8f2ff;
+  --amber: #e76500;
+  --amber-ink: #b74f00;
+  --amber-wash: #fdf0e4;
+  --green: #107e3e;
+  --green-ink: #0c6431;
+  --green-wash: #e6f4ec;
+  --shadow: 0 1px 2px rgba(0,20,74,.06), 0 8px 24px -12px rgba(0,20,74,.18);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--f-ui);
+  color: var(--ink-2);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* ── Shell ─────────────────────────────────────────── */
+
+.deck {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+/* Top progress hairline */
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--rule-soft);
+  z-index: 60;
+}
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--blue);
+  transition: width .5s cubic-bezier(.2,.7,.2,1);
+}
+
+/* ── Instrument rail ───────────────────────────────── */
+
+.rail {
+  border-right: 1px solid var(--rule);
+  background: var(--panel);
+  padding: 26px 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.rail-brand {
+  padding: 0 20px 18px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 14px;
+}
+.rail-brand .mark {
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 700;
+}
+.rail-brand .who {
+  font-family: var(--f-display);
+  font-size: 17px;
+  color: var(--ink);
+  margin-top: 4px;
+  line-height: 1.2;
+}
+.rail-brand .sub {
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  color: var(--ink-3);
+  letter-spacing: .01em;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+.act-label {
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 14px 20px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.act-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.tick {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 6px 20px 6px 18px;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px;
+  color: var(--ink-3);
+  border-left: 2px solid transparent;
+  transition: color .18s, border-color .18s, background .18s;
+}
+.tick:hover { color: var(--ink); background: var(--panel-2); }
+.tick .n {
+  font-family: var(--f-data);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  opacity: .75;
+}
+.tick .t { font-size: 12.5px; line-height: 1.3; }
+.tick[aria-current="true"] {
+  color: var(--ink);
+  border-left-color: var(--blue);
+  background: var(--panel-2);
+}
+.tick[aria-current="true"] .t { font-weight: 600; }
+.tick[aria-current="true"] .n { color: var(--blue); opacity: 1; font-weight: 700; }
+.tick:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+
+.rail-foot {
+  margin-top: auto;
+  padding: 16px 20px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  appearance: none;
+  border: 1px solid var(--rule);
+  background: var(--ground);
+  color: var(--ink-3);
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color .18s, border-color .18s;
+}
+.chip:hover { color: var(--ink); border-color: var(--blue); }
+.chip[aria-pressed="true"] { color: var(--blue); border-color: var(--blue); }
+.chip:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* ── Stage ─────────────────────────────────────────── */
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scene {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 44px 56px 92px;
+}
+.scene.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: safe center;
+}
+
+.scene-inner {
+  width: 100%;
+  max-width: var(--stage-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reveal cascade */
+[data-reveal] { opacity: 0; transform: translateY(10px); }
+.scene.is-active [data-reveal] {
+  animation: rise .5s cubic-bezier(.2,.7,.2,1) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms + 40ms);
+}
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* ── Scene typography ──────────────────────────────── */
+
+.eyebrow {
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow .src {
+  color: var(--ink-3);
+  font-weight: 400;
+  letter-spacing: .1em;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--blue);
+  flex: none;
+}
+
+h1.scene-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  color: var(--ink);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -.015em;
+  margin: 14px 0 0;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+h1.scene-title.wide { max-width: 30ch; }
+
+.deck-lede {
+  font-size: 16.5px;
+  color: var(--ink-3);
+  margin: 12px 0 0;
+  max-width: 66ch;
+  line-height: 1.55;
+}
+
+.section-head {
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.section-head b { color: var(--ink); font-weight: 700; letter-spacing: .12em; }
+
+/* ── Layout helpers ────────────────────────────────── */
+
+.cols {
+  display: grid;
+  gap: 30px;
+  margin-top: 30px;
+}
+.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.cols-7-5 { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.cols-5-7 { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.grow { flex: 1; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.stack-s { display: flex; flex-direction: column; gap: 8px; }
+
+/* ── Cards & lists ─────────────────────────────────── */
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px 20px;
+}
+.card.plain { background: none; }
+.card.tint-blue { background: var(--blue-wash); border-color: color-mix(in srgb, var(--blue) 28%, transparent); }
+.card.tint-amber { background: var(--amber-wash); border-color: color-mix(in srgb, var(--amber) 28%, transparent); }
+.card.tint-green { background: var(--green-wash); border-color: color-mix(in srgb, var(--green) 28%, transparent); }
+
+.card-title {
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+/* Reason list — the ledger motif */
+.ledger { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ledger li {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+.ledger li:last-child { border-bottom: 0; }
+.ledger .idx {
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+.ledger.neg .idx { color: var(--amber); }
+.ledger.pos .idx { color: var(--blue); }
+.ledger .body { color: var(--ink-2); font-size: 14.5px; line-height: 1.5; }
+.ledger .body b { color: var(--ink); font-weight: 600; }
+
+.tickmarks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.tickmarks li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+.tickmarks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 9px; height: 9px;
+  border-radius: 1px;
+  background: var(--blue);
+}
+.tickmarks.amber li::before { background: var(--amber); }
+.tickmarks li b { color: var(--ink); font-weight: 600; }
+
+/* Pull quote — the accountability voice */
+.quote {
+  font-family: var(--f-display);
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.42;
+  color: var(--ink);
+  border-left: 3px solid var(--blue);
+  padding: 4px 0 4px 20px;
+  margin: 0;
+  max-width: 52ch;
+}
+.quote cite {
+  display: block;
+  font-family: var(--f-data);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 12px;
+}
+.quote.amber { border-left-color: var(--amber); }
+
+/* ── Data primitives ───────────────────────────────── */
+
+.readout {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.02em;
+}
+
+.hero-num {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1;
+  letter-spacing: -.035em;
+  color: var(--ink);
+}
+.hero-num.green { color: var(--green-ink); }
+.hero-num.blue { color: var(--blue-ink); }
+
+.tile {
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--blue);
+  background: var(--panel);
+  border-radius: 3px;
+  padding: 16px 16px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tile.green { border-top-color: var(--green); }
+.tile.amber { border-top-color: var(--amber); }
+.tile .lab {
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tile .cap { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
+
+/* Horizontal bar chart */
+.chart { display: flex; flex-direction: column; gap: 2px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 168px) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 7px 0;
+  border-radius: 2px;
+  transition: background .15s;
+}
+.bar-row:hover { background: var(--panel); }
+.bar-label {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.25;
+  text-align: right;
+}
+.bar-label small {
+  display: block;
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.bar-track {
+  position: relative;
+  height: 26px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--valw, 68px);
+  align-items: center;
+  gap: 0 10px;
+}
+.bar-fill {
+  height: 14px;
+  width: 0;
+  border-radius: 0 4px 4px 0;
+  background: var(--blue);
+  justify-self: start;
+  transition: width .85s cubic-bezier(.2,.7,.2,1);
+  transition-delay: calc(var(--i, 0) * 70ms + 220ms);
+}
+.scene.is-active .bar-fill { width: var(--w); }
+.bar-fill.amber { background: var(--amber); }
+.bar-fill.green { background: var(--green); }
+.bar-fill.muted { background: var(--rule); border-radius: 4px; }
+.bar-val {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.bar-note { font-size: 12px; color: var(--ink-3); white-space: nowrap; }
+
+.axis {
+  margin-top: 6px;
+  padding-top: 7px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(96px, 168px) minmax(0, 1fr);
+  gap: 14px;
+}
+.axis-scale {
+  margin-right: calc(var(--valw, 68px) + 10px);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .06em;
+}
+
+/* Gauge: value against a threshold */
+.gauge { margin-top: 4px; }
+.gauge-track {
+  position: relative;
+  height: 34px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.gauge-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 12px;
+  font-family: var(--f-data);
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a0c00;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 1s cubic-bezier(.2,.7,.2,1) .3s;
+}
+.scene.is-active .gauge-fill { width: var(--w); }
+.gauge-mark {
+  position: absolute;
+  top: -4px; bottom: -4px;
+  width: 2px;
+  background: var(--blue);
+  left: var(--at);
+}
+.gauge-outer { position: relative; }
+.gauge-flag {
+  position: absolute;
+  left: var(--at);
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--blue-ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.gauge-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.gauge-legend b { color: var(--ink); }
+
+/* Split bar: part-of-whole */
+.split {
+  display: flex;
+  gap: 2px;
+  height: 46px;
+  margin: 4px 0 10px;
+}
+.split-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-data);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a0c00;
+  border-radius: 2px;
+  width: 0;
+  transition: width .9s cubic-bezier(.2,.7,.2,1) .25s;
+  overflow: hidden;
+}
+.scene.is-active .split-seg { width: var(--w); }
+.split-seg.a { background: var(--amber); }
+.split-seg.b { background: var(--panel-2); color: var(--ink-2); border: 1px solid var(--rule); }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i {
+  width: 11px; height: 11px;
+  border-radius: 2px;
+  background: var(--blue);
+  flex: none;
+}
+.legend i.amber { background: var(--amber); }
+.legend i.green { background: var(--green); }
+.legend i.muted { background: var(--panel-2); border: 1px solid var(--rule); }
+
+/* Vertical segmented total column */
+.column-wrap { display: flex; gap: 16px; align-items: stretch; }
+.column {
+  width: 74px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  flex: none;
+}
+.column-seg {
+  background: var(--green);
+  border-radius: 2px;
+  height: 0;
+  transition: height .8s cubic-bezier(.2,.7,.2,1);
+  transition-delay: calc(var(--i, 0) * 110ms + 300ms);
+  opacity: var(--o, 1);
+}
+.scene.is-active .column-seg { height: var(--h); }
+.column-key { display: flex; flex-direction: column-reverse; gap: 2px; flex: 1; }
+.column-key div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  min-height: 0;
+  flex: 0 0 var(--h, auto);
+}
+.column-key .k-val {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 12.5px;
+}
+
+/* Timeline */
+.timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; margin-top: 6px; }
+.phase {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--blue);
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: relative;
+}
+.phase:nth-child(1) { border-top-color: color-mix(in srgb, var(--blue) 45%, var(--rule)); }
+.phase:nth-child(2) { border-top-color: color-mix(in srgb, var(--blue) 75%, var(--rule)); }
+.phase:nth-child(3) { border-top-color: var(--blue); }
+.phase .yr {
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 700;
+}
+.phase h3 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 21px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+}
+.phase p { margin: 0; font-size: 13.5px; color: var(--ink-3); line-height: 1.5; }
+.phase .flag {
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Stack components */
+.stack-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; }
+.node {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  padding: 16px 15px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.node .role {
+  font-family: var(--f-data);
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 700;
+}
+.node h4 { margin: 0; font-size: 16px; color: var(--ink); font-weight: 600; letter-spacing: -.01em; }
+.node p { margin: 0; font-size: 12.5px; color: var(--ink-3); line-height: 1.45; }
+
+/* Two-track before/after */
+.track {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 0 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.track:last-of-type { border-bottom: 0; }
+.track .when {
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.track .now, .track .next { font-size: 13.5px; line-height: 1.45; }
+.track .now { color: var(--amber-ink); }
+.track .next { color: var(--ink-2); }
+.track .next b { color: var(--ink); font-weight: 600; }
+.track .arrow { color: var(--ink-3); text-align: center; font-size: 14px; }
+.track-head {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) 24px minmax(0, 1fr);
+  gap: 0 14px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.track-head .h-now { color: var(--amber); font-weight: 700; }
+.track-head .h-next { color: var(--blue); font-weight: 700; }
+
+/* Delta table */
+.tablewrap { overflow-x: auto; }
+table.delta {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 700px;
+}
+table.delta th {
+  font-family: var(--f-data);
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: left;
+  font-weight: 700;
+  padding: 0 14px 9px 0;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+table.delta td {
+  padding: 13px 14px 13px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: middle;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+table.delta tr:last-child td { border-bottom: 0; }
+table.delta tbody tr:hover td { background: var(--panel); }
+table.delta .m { color: var(--ink); font-weight: 600; font-size: 14px; }
+table.delta .from, table.delta .to {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+table.delta .from { color: var(--amber-ink); }
+table.delta .to { color: var(--blue-ink); }
+table.delta .val {
+  font-family: var(--f-data);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--green-ink);
+  white-space: nowrap;
+}
+table.delta .how { font-size: 12.5px; }
+
+/* Objection / answer pairs */
+.qa {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: baseline;
+}
+.qa:last-child { border-bottom: 0; }
+.qa dt {
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber-ink);
+  font-weight: 700;
+}
+.qa dd { margin: 0; font-size: 14px; color: var(--ink-2); }
+.qa dd b { color: var(--ink); font-weight: 600; }
+
+/* Formula plate */
+.formula {
+  font-family: var(--f-data);
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  padding: 20px 22px;
+  background: var(--blue-wash);
+  border: 1px solid color-mix(in srgb, var(--blue) 30%, transparent);
+  border-left: 3px solid var(--blue);
+  border-radius: 3px;
+  text-align: center;
+}
+
+/* Cover */
+.cover {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cover h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(38px, 5.6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -.025em;
+  color: var(--ink);
+  margin: 20px 0 0;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+.cover h1 em { font-style: italic; color: var(--blue); }
+.cover .kicker {
+  font-family: var(--f-data);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cover .thesis {
+  font-size: clamp(16px, 1.7vw, 19px);
+  color: var(--ink-3);
+  max-width: 60ch;
+  margin: 24px 0 0;
+  line-height: 1.55;
+}
+.acts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  margin-top: 42px;
+  border-top: 1px solid var(--rule);
+  padding-top: 0;
+}
+.acts > div {
+  padding: 20px 22px 20px 0;
+  border-top: 3px solid var(--blue);
+  margin-top: -1px;
+  margin-right: 22px;
+}
+.acts .an {
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 700;
+}
+.acts .at {
+  font-family: var(--f-display);
+  font-size: 19px;
+  color: var(--ink);
+  margin: 7px 0 5px;
+  line-height: 1.2;
+}
+.acts .ad { font-size: 13px; color: var(--ink-3); line-height: 1.45; }
+
+.start-hint {
+  margin-top: 40px;
+  font-family: var(--f-data);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.key {
+  display: inline-block;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  border-radius: 3px;
+  padding: 2px 7px;
+  font-family: var(--f-data);
+  font-size: 10px;
+  color: var(--ink-2);
+}
+
+/* Closing statement */
+.closer {
+  font-family: var(--f-display);
+  font-size: clamp(22px, 2.9vw, 36px);
+  line-height: 1.22;
+  color: var(--ink);
+  letter-spacing: -.015em;
+  max-width: 30ch;
+  text-wrap: balance;
+  margin: 0;
+}
+
+/* ── Controls ──────────────────────────────────────── */
+
+.controls {
+  position: absolute;
+  right: 30px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 7px 9px 7px 14px;
+  z-index: 40;
+  box-shadow: var(--shadow);
+}
+.counter {
+  font-family: var(--f-data);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .1em;
+  color: var(--ink-3);
+}
+.counter b { color: var(--ink); font-weight: 700; }
+.nav {
+  appearance: none;
+  width: 34px; height: 30px;
+  border: 1px solid var(--rule);
+  background: var(--ground);
+  color: var(--ink);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.nav:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); color: #fff; }
+.nav:disabled { opacity: .3; cursor: default; }
+.nav:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Speaker notes drawer */
+.notes {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  max-height: 46%;
+  overflow-y: auto;
+  background: var(--panel);
+  border-top: 2px solid var(--blue);
+  padding: 20px 56px 24px;
+  transform: translateY(101%);
+  transition: transform .34s cubic-bezier(.2,.7,.2,1);
+  z-index: 45;
+  box-shadow: 0 -12px 32px -16px rgba(0,20,74,.35);
+}
+.notes.open { transform: none; }
+.notes h5 {
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.notes .note-body {
+  max-width: 900px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  white-space: pre-line;
+}
+.notes .note-body b { color: var(--ink); }
+
+/* Tooltip */
+#tip {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  background: var(--ink);
+  color: var(--ground);
+  font-family: var(--f-data);
+  font-size: 11.5px;
+  line-height: 1.5;
+  padding: 7px 10px;
+  border-radius: 3px;
+  max-width: 280px;
+  white-space: pre-line;
+  transition: opacity .12s;
+  box-shadow: var(--shadow);
+}
+#tip.on { opacity: 1; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.foot-note {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-data);
+  font-size: 10px;
+  letter-spacing: .07em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .deck { grid-template-columns: 1fr; }
+  .rail {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 260px;
+    z-index: 70;
+    transform: translateX(-101%);
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+    box-shadow: var(--shadow);
+  }
+  .rail.open { transform: none; }
+  .menu-btn { display: inline-flex !important; }
+  .scene { padding: 60px 24px 96px; }
+  .notes { padding: 20px 24px 24px; }
+  .cols-3, .cols-4, .cols-5, .cols-7-5, .cols-5-7, .cols-2 { grid-template-columns: minmax(0, 1fr); }
+  .timeline, .stack-grid, .acts { grid-template-columns: minmax(0, 1fr); }
+  .acts > div { margin-right: 0; }
+  .track, .track-head { grid-template-columns: 100px minmax(0, 1fr); }
+  .track .arrow { display: none; }
+  .track .next { grid-column: 2; }
+  .track-head .h-next { grid-column: 2; }
+}
+
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 16px; left: 20px;
+  z-index: 50;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 620px) {
+  .scene { padding: 58px 18px 92px; }
+  .controls { right: 14px; bottom: 14px; left: 14px; justify-content: space-between; }
+  .qa { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .column-wrap { gap: 12px; }
+  .column { width: 54px; min-height: 210px; }
+  .column-key div { font-size: 12px; }
+
+  .bar-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 9px 0; }
+  .bar-label { text-align: left; }
+  .axis { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0ms !important;
+  }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+@media print {
+  body { overflow: visible; }
+  .deck { position: static; display: block; }
+  .rail, .controls, .notes, .progress, .menu-btn { display: none; }
+  .scene { display: block !important; page-break-after: always; padding: 24px; overflow: visible; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .bar-fill { width: var(--w) !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="deck">
+
+  <!-- ── Rail ──────────────────────────────────────── -->
+  <nav class="rail" id="rail" aria-label="Storyboard scenes">
+    <div class="rail-brand">
+      <div class="mark">SAP × WOW Automotive</div>
+      <div class="who">Executive Pitch Storyboard</div>
+      <div class="sub">3 ACTS · 13 SCENES · 4.5 MIN</div>
+    </div>
+    <div id="railTicks"></div>
+    <div class="rail-foot">
+      <button class="chip" id="notesBtn" aria-pressed="false">Talk track</button>
+      <button class="chip" id="themeBtn">Theme</button>
+    </div>
+  </nav>
+
+  <!-- ── Stage ─────────────────────────────────────── -->
+  <main class="stage" id="stage">
+
+    <div class="menu-btn">
+      <button class="chip" id="menuBtn" aria-expanded="false">Scenes</button>
+    </div>
+
+    <!-- ═══ SCENE 1 — Cover ═══════════════════════ -->
+    <section class="scene is-active" data-act="I" data-title="The pitch" aria-label="Scene 1">
+      <div class="scene-inner">
+        <div class="cover">
+          <div class="kicker" data-reveal style="--i:0">WOW Automotive · Executive Committee</div>
+          <h1 data-reveal style="--i:1">We lost your trust. <em>Here is what we changed.</em></h1>
+          <p class="thesis" data-reveal style="--i:2">
+            Two years ago SAP proposed a Cloud ERP transformation to WOW Automotive. It didn't land —
+            too much upfront risk, no phased approach, and no measurable link to the €400m savings target.
+            This is the rebuilt case: de-risked, sequenced, and funded by the savings it creates.
+          </p>
+
+          <div class="acts">
+            <div data-reveal style="--i:3">
+              <div class="an">Act I · CVG</div>
+              <div class="at">Rebuilding trust</div>
+              <div class="ad">Why it was lost, what SAP changed, and the three-year path that de-risks the journey.</div>
+            </div>
+            <div data-reveal style="--i:4">
+              <div class="an">Act II · P&amp;E</div>
+              <div class="at">AI inside real work</div>
+              <div class="ad">One role — the supply chain planner — and what actually changes in their morning.</div>
+            </div>
+            <div data-reveal style="--i:5">
+              <div class="an">Act III · Finance</div>
+              <div class="at">The value case</div>
+              <div class="ad">€140m a year, where every euro comes from, and a commercial model that pays as you adopt.</div>
+            </div>
+          </div>
+
+          <div class="start-hint" data-reveal style="--i:6">
+            <span class="key">→</span> or click anywhere to advance
+            <span style="opacity:.5">·</span>
+            <span class="key">N</span> for the talk track
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 2 — Why trust was lost ══════════ -->
+    <section class="scene" data-act="I" data-title="Why trust was lost" aria-label="Scene 2">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act I · Rebuilding Trust <span class="src">Deck slide 1</span></div>
+        <h1 class="scene-title" data-reveal style="--i:1">We own that.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          Before asking for anything, the honest account of why the last proposal failed —
+          and why WOW is now cautious with every vendor, not just SAP.
+        </p>
+
+        <div class="cols cols-7-5">
+          <div data-reveal style="--i:3">
+            <div class="section-head"><b>Why trust was lost</b><span>Four failures</span></div>
+            <ul class="ledger neg">
+              <li><span class="idx">01</span><span class="body">Previous ERP proposal <b>lacked a phased approach</b> — too much upfront risk in a single commitment.</span></li>
+              <li><span class="idx">02</span><span class="body"><b>Implementation delays</b> eroded confidence in SAP's ability to deliver.</span></li>
+              <li><span class="idx">03</span><span class="body">The <b>Salesforce CRM rollout also failed</b> — WOW is cautious with all vendors, not only SAP.</span></li>
+              <li><span class="idx">04</span><span class="body"><b>No clear link</b> between the investment and a measurable business outcome.</span></li>
+            </ul>
+          </div>
+
+          <div data-reveal style="--i:4">
+            <div class="card tint-amber" style="height:100%; display:flex; flex-direction:column; justify-content:center;">
+              <blockquote class="quote amber">
+                "Two years ago, we proposed a Cloud ERP transformation. It didn't land — too much
+                upfront risk, no clear phased approach, and no measurable link to your €400m savings target.
+                We own that."
+                <cite>Opening line · 15 seconds</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot-note" data-reveal style="--i:5">Source: WOW Automotive Executive Pitch, slide 1 — CVG Challenge 1</div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 3 — What changed ════════════════ -->
+    <section class="scene" data-act="I" data-title="What SAP changed" aria-label="Scene 3">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act I · Rebuilding Trust <span class="src">Deck slide 1</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">Five things are different this time.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          Not a better pitch — a different operating model. Each change maps directly to one of the
+          four reasons the last proposal failed.
+        </p>
+
+        <div class="cols cols-5" style="gap:2px; margin-top:26px;">
+          <div class="node" data-reveal style="--i:3">
+            <div class="role">Delivery</div>
+            <h4>RISE with SAP</h4>
+            <p>Structured, de-risked cloud transformation instead of a single big-bang commitment.</p>
+          </div>
+          <div class="node" data-reveal style="--i:4">
+            <div class="role">Method</div>
+            <h4>SAP Activate</h4>
+            <p>Milestone-gated methodology with value checkpoints — you see value before committing further.</p>
+          </div>
+          <div class="node" data-reveal style="--i:5">
+            <div class="role">Product</div>
+            <h4>Business AI</h4>
+            <p>Embedded, not bolted on — Joule and the Autonomous Enterprise run inside the process.</p>
+          </div>
+          <div class="node" data-reveal style="--i:6">
+            <div class="role">Commercial</div>
+            <h4>cACV model</h4>
+            <p>You pay for consumption, not licences purchased.</p>
+          </div>
+          <div class="node" data-reveal style="--i:7">
+            <div class="role">Incentive</div>
+            <h4>Aligned KPIs</h4>
+            <p>SAP's KPIs are tied to customer success, not deal size.</p>
+          </div>
+        </div>
+
+        <div class="cols cols-2" style="margin-top:30px;">
+          <div class="card tint-blue" data-reveal style="--i:8">
+            <div class="card-title">The change that matters most</div>
+            <p style="margin:0; font-size:14.5px; line-height:1.55;">
+              SAP has <b style="color:var(--ink)">skin in the game until the subscription ends</b>.
+              Under cACV, revenue only arrives when WOW actually uses — and benefits from — the platform.
+            </p>
+            <p style="margin:14px 0 0; font-size:14.5px; line-height:1.55;">
+              That reverses the incentive that produced the last proposal. A licence sale rewards the
+              size of the signature; a consumption model rewards adoption — which is the same thing
+              WOW is trying to buy.
+            </p>
+          </div>
+          <div class="card" data-reveal style="--i:9">
+            <div class="card-title">What this answers</div>
+            <ul class="tickmarks">
+              <li>Phasing replaces the all-at-once ask <b>(failure 01)</b></li>
+              <li>Milestone gates make delivery visible <b>(failure 02)</b></li>
+              <li>Outcome-linked KPIs replace deal-size KPIs <b>(failure 04)</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 4 — The de-risked path ══════════ -->
+    <section class="scene" data-act="I" data-title="The de-risked path" aria-label="Scene 4">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act I · Rebuilding Trust <span class="src">Deck slide 1</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">Year 1 pays for Year 2. There is no second ask.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          Three phases, each gated. You commit to the next phase only after the previous one has
+          delivered measurable value.
+        </p>
+
+        <div class="timeline" style="margin-top:28px;">
+          <div class="phase" data-reveal style="--i:3">
+            <div class="yr">Year 1</div>
+            <h3>Assess &amp; Quick Wins</h3>
+            <p>Consolidate R/3, AI in finance, quick wins, BTP as the bridge off legacy.</p>
+            <div class="flag">Gate → €100m realised</div>
+          </div>
+          <div class="phase" data-reveal style="--i:4">
+            <div class="yr">Year 2</div>
+            <h3>Scale &amp; Optimise</h3>
+            <p>S/4HANA rollout, IBP, inventory optimisation across the network.</p>
+            <div class="flag">Funded by Year 1</div>
+          </div>
+          <div class="phase" data-reveal style="--i:5">
+            <div class="yr">Year 3</div>
+            <h3>Autonomous Enterprise</h3>
+            <p>Predictive supply chain, full AI operations inside the planning process.</p>
+            <div class="flag">Steady state €140m/yr</div>
+          </div>
+        </div>
+
+        <div class="card tint-green" style="margin-top:2px; border-radius:0 0 4px 4px; --i:6;" data-reveal>
+          <p style="margin:0; font-size:15px; color:var(--ink);">
+            <b>Year 1 savings (€100m) fund the Year 2 journey — no additional ask.</b>
+            And if the value isn't there after Year 1, the T4C clause lets WOW walk away.
+          </p>
+        </div>
+
+        <div class="foot-note" data-reveal style="--i:7">Phase names and Year 1 figure as stated in slide 1; T4C clause per slide 3</div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 5 — Proven in automotive ════════ -->
+    <section class="scene" data-act="I" data-title="Proven in automotive" aria-label="Scene 5">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act I · Rebuilding Trust <span class="src">Deck slide 1</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">This isn't theoretical. Your peers have already done it.</h1>
+
+        <div class="cols cols-7-5">
+          <div data-reveal style="--i:2">
+            <div class="section-head"><b>Measured improvement</b><span>Reported reduction</span></div>
+            <div class="chart" role="img" aria-label="Reported improvements: SLB 37 percent DIO reduction, Continental 30 percent IT cost reduction, ZF Friedrichshafen 15 percent inventory days reduction.">
+              <div class="bar-row" data-tip="SLB (Schlumberger)&#10;37% DIO reduction&#10;via SAP IBP + AI demand sensing">
+                <div class="bar-label">SLB<small>DIO reduction</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="--w:100%; --i:0"></div>
+                  <div class="bar-val">−37%</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="Continental AG&#10;30% IT cost reduction&#10;S/4HANA across 60+ plants">
+                <div class="bar-label">Continental AG<small>IT cost reduction</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="--w:81%; --i:1"></div>
+                  <div class="bar-val">−30%</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="ZF Friedrichshafen&#10;15% reduction in inventory days&#10;RISE with SAP deployment">
+                <div class="bar-label">ZF Friedrichshafen<small>Inventory days</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="--w:41%; --i:2"></div>
+                  <div class="bar-val">−15%</div>
+                </div>
+              </div>
+              <div class="axis">
+                <div></div>
+                <div class="axis-scale"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>37%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack" data-reveal style="--i:3">
+            <div class="card">
+              <div class="card-title">SLB · Schlumberger</div>
+              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">37% DIO reduction via SAP IBP + AI demand sensing — the same stack proposed for WOW.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Continental AG</div>
+              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">S/4HANA across 60+ plants, 30% IT cost reduction. Automotive scale, automotive complexity.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">ZF Friedrichshafen</div>
+              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">RISE deployment, inventory days reduced by 15% — the reference for WOW's own DIO target.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot-note" data-reveal style="--i:4">Bars are scaled to the largest reported reduction (37%). Figures as stated in slide 1.</div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 6 — The planner's morning ═══════ -->
+    <section class="scene" data-act="II" data-title="The planner's morning" aria-label="Scene 6">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act II · AI in Real Work <span class="src">Deck slide 2</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">One role. One morning. Eighty per cent of it wasted.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          Alina said it plainly: <em>no more dashboards no one uses</em>. So start where the work actually
+          happens — the supply chain planner's day, today.
+        </p>
+
+        <div class="cols cols-5-7">
+          <div class="stack" data-reveal style="--i:3">
+            <div>
+              <div class="section-head"><b>Planner's time today</b><span>Of the working day</span></div>
+              <div class="split" role="img" aria-label="80 percent of the planner's time goes to tasks AI can handle; 20 percent remains.">
+                <div class="split-seg a" style="--w:80%">80%</div>
+                <div class="split-seg b" style="--w:20%">20%</div>
+              </div>
+              <div class="legend">
+                <span><i class="amber"></i> Tasks AI can handle</span>
+                <span><i class="muted"></i> Everything else</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-head"><b>Inventory · DIO</b><span>Days on hand</span></div>
+              <div class="gauge" role="img" aria-label="Inventory at 69 days against a target below 60 days.">
+                <div class="gauge-outer">
+                  <div class="gauge-track">
+                    <div class="gauge-fill" style="--w:86%">69 DAYS</div>
+                    <div class="gauge-mark" style="--at:75%"></div>
+                  </div>
+                  <div class="gauge-flag" style="--at:75%">▲ TARGET &lt;60</div>
+                </div>
+                <div class="gauge-legend">
+                  <span>0</span>
+                  <span>SCALE 0–80 DAYS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-reveal style="--i:4">
+            <div class="section-head"><b>The problem today</b><span>Slide 2</span></div>
+            <ul class="ledger neg">
+              <li><span class="idx">01</span><span class="body">Planners log into <b>3+ systems every morning</b> just to assemble a picture.</span></li>
+              <li><span class="idx">02</span><span class="body"><b>80% of their time</b> goes to tasks AI can already handle.</span></li>
+              <li><span class="idx">03</span><span class="body">Inventory sits at <b>69 days</b> against a target below 60.</span></li>
+              <li><span class="idx">04</span><span class="body">Disruptions in <b>copper, GaN and aluminium</b> are discovered days late.</span></li>
+              <li><span class="idx">05</span><span class="body"><b>Reactive shortage management</b> — no predictive capability at all.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 7 — What changes ════════════════ -->
+    <section class="scene" data-act="II" data-title="What changes" aria-label="Scene 7">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act II · AI in Real Work <span class="src">Deck slide 2</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">The same morning, with intelligence inside the workflow.</h1>
+
+        <div style="margin-top:26px; --i:2;" data-reveal>
+          <div class="track-head">
+            <span>Moment</span>
+            <span class="h-now">Today</span>
+            <span></span>
+            <span class="h-next">With SAP</span>
+          </div>
+          <div class="track">
+            <span class="when">Log on</span>
+            <span class="now">Log into 3+ systems and aggregate the data by hand</span>
+            <span class="arrow">→</span>
+            <span class="next"><b>Joule</b> surfaces a prioritised exception list — one interface</span>
+          </div>
+          <div class="track">
+            <span class="when">Forecast</span>
+            <span class="now">Forecast accuracy at 68%, refreshed on a cycle</span>
+            <span class="arrow">→</span>
+            <span class="next"><b>IBP</b> auto-updates forecasts with live demand signals</span>
+          </div>
+          <div class="track">
+            <span class="when">Reorder</span>
+            <span class="now">Routine reorders handled manually, planner by planner</span>
+            <span class="arrow">→</span>
+            <span class="next"><b>Autonomous SC</b> handles routine reorders within guardrails</span>
+          </div>
+          <div class="track">
+            <span class="when">Disruption</span>
+            <span class="now">Copper, GaN and aluminium shocks found days after the fact</span>
+            <span class="arrow">→</span>
+            <span class="next"><b>Business Network</b> alerts on supplier risk before production impact</span>
+          </div>
+          <div class="track">
+            <span class="when">The rest of the day</span>
+            <span class="now">Data gathering, chasing, firefighting</span>
+            <span class="arrow">→</span>
+            <span class="next">The planner focuses on <b>strategy</b>, not data gathering</span>
+          </div>
+        </div>
+
+        <div class="card tint-blue" style="margin-top:28px; --i:3;" data-reveal>
+          <div class="card-title">Key message</div>
+          <p style="margin:0; font-size:15.5px; line-height:1.55; color:var(--ink);">
+            We are not giving WOW another dashboard. We are embedding intelligence directly into the
+            planner's existing workflow — <b>one interface, AI inside, humans in control.</b>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 8 — The stack ═══════════════════ -->
+    <section class="scene" data-act="II" data-title="The solution stack" aria-label="Scene 8">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act II · AI in Real Work <span class="src">Deck slide 2</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">Five components. Each one earns its place in the planner's day.</h1>
+
+        <div class="stack-grid" style="margin-top:28px;">
+          <div class="node" data-reveal style="--i:2">
+            <div class="role">Interface</div>
+            <h4>Joule</h4>
+            <p>Natural language interface. The single front door to the whole exception list.</p>
+          </div>
+          <div class="node" data-reveal style="--i:3">
+            <div class="role">Forecast</div>
+            <h4>IBP</h4>
+            <p>AI demand forecasting, updated continuously from live signals.</p>
+          </div>
+          <div class="node" data-reveal style="--i:4">
+            <div class="role">Execution</div>
+            <h4>Autonomous SC</h4>
+            <p>Auto-reorder within guardrails. Routine decisions stop reaching a human.</p>
+          </div>
+          <div class="node" data-reveal style="--i:5">
+            <div class="role">Signal</div>
+            <h4>Business Network</h4>
+            <p>Live supplier signals — risk surfaces before it reaches production.</p>
+          </div>
+          <div class="node" data-reveal style="--i:6">
+            <div class="role">Foundation</div>
+            <h4>BTP</h4>
+            <p>Bridges the legacy estate. No big-bang cutover required.</p>
+          </div>
+        </div>
+
+        <div class="cols cols-2" style="margin-top:30px;">
+          <div class="card" data-reveal style="--i:7">
+            <div class="card-title">SAP's solution plan</div>
+            <ul class="tickmarks">
+              <li>Joule surfaces a <b>prioritised exception list</b> each morning</li>
+              <li>IBP <b>auto-updates forecasts</b> with live demand signals</li>
+              <li>Autonomous SC handles <b>routine reorders within guardrails</b></li>
+              <li>Business Network <b>alerts on supplier risk</b> before production impact</li>
+              <li>The planner focuses on <b>strategy — not data gathering</b></li>
+            </ul>
+          </div>
+          <div class="card tint-blue" data-reveal style="--i:8">
+            <div class="card-title">Why BTP comes first</div>
+            <p style="margin:0 0 12px; font-size:14px; line-height:1.55;">
+              BTP bridges the legacy estate in Year 1, which is what makes the phased path credible.
+              WOW gets working AI on top of systems it already runs — before any S/4HANA cutover.
+            </p>
+            <p style="margin:0; font-size:14px; line-height:1.55; color:var(--ink);">
+              <b>That is the direct answer to "too much upfront risk".</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 9 — Governance ══════════════════ -->
+    <section class="scene" data-act="II" data-title="AI automates, humans decide" aria-label="Scene 9">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act II · AI in Real Work <span class="src">Deck slide 2</span></div>
+        <h1 class="scene-title" data-reveal style="--i:1">AI automates. Humans decide.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          The governance principle, stated before anyone has to ask for it.
+        </p>
+
+        <div class="cols cols-2" style="margin-top:28px;">
+          <div class="card tint-blue" data-reveal style="--i:3">
+            <div class="card-title">What AI does</div>
+            <ul class="tickmarks">
+              <li>Automates <b>routine decisions within guardrails</b></li>
+              <li>Shows <b>WHY</b> behind every recommendation</li>
+              <li>States <b>what CONFIDENCE</b> it holds</li>
+              <li>Spells out <b>what CONSEQUENCE</b> follows</li>
+            </ul>
+          </div>
+          <div class="card" data-reveal style="--i:4">
+            <div class="card-title">What humans keep</div>
+            <ul class="tickmarks amber">
+              <li>Control of <b>exceptions</b></li>
+              <li><b>Strategic choices</b></li>
+              <li><b>Approvals above thresholds</b></li>
+              <li>The <b>override</b> — every one is logged</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card tint-green" style="margin-top:26px; --i:5;" data-reveal>
+          <p style="margin:0; font-size:15px; line-height:1.55;">
+            <b style="color:var(--ink)">Overrides are logged — the system learns from both.</b>
+            Every time a planner disagrees with the model, that disagreement becomes training signal.
+            Governance isn't a brake on the AI; it's how the AI gets better.
+          </p>
+        </div>
+
+        <div class="foot-note" data-reveal style="--i:6">Governance principle as stated in slide 2</div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 10 — Operational delta ══════════ -->
+    <section class="scene" data-act="III" data-title="Before vs after" aria-label="Scene 10">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act III · The Value Case <span class="src">Deck slide 3</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">Five operational metrics. Every one of them moves.</h1>
+        <p class="deck-lede" data-reveal style="--i:2">
+          Tanja — here is exactly where the numbers come from. Each row names the mechanism, not just the target.
+        </p>
+
+        <div class="tablewrap" style="margin-top:26px; --i:3;" data-reveal>
+          <table class="delta">
+            <caption class="sr">Operational impact before and after SAP, with annual value and mechanism</caption>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Today</th>
+                <th>Target</th>
+                <th>Annual value</th>
+                <th>How we get there</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="m">Inventory (DIO)</td>
+                <td class="from">69 days</td>
+                <td class="to">&lt;60 days</td>
+                <td class="val">€45m+</td>
+                <td class="how">IBP demand sensing + Autonomous SC reorder optimisation</td>
+              </tr>
+              <tr>
+                <td class="m">Forecast accuracy</td>
+                <td class="from">68%</td>
+                <td class="to">85–90%</td>
+                <td class="val">€30m+</td>
+                <td class="how">AI demand forecasting via IBP + Business Network signals</td>
+              </tr>
+              <tr>
+                <td class="m">Planner productivity</td>
+                <td class="from">Baseline</td>
+                <td class="to">+40–80%</td>
+                <td class="val">€15m+</td>
+                <td class="how">Joule automation of routine tasks, exception-based work</td>
+              </tr>
+              <tr>
+                <td class="m">Stockouts</td>
+                <td class="from">Current</td>
+                <td class="to">−30%</td>
+                <td class="val">€25m+</td>
+                <td class="how">Predictive supply signals + automated safety stock adjustment</td>
+              </tr>
+              <tr>
+                <td class="m">IT consolidation</td>
+                <td class="from">5+ systems</td>
+                <td class="to">1 platform</td>
+                <td class="val">€25m+</td>
+                <td class="how">R/3 decommission, Oracle retire, single S/4HANA + BTP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cols cols-3" style="margin-top:28px;">
+          <div class="card tint-amber" data-reveal style="--i:4">
+            <div class="card-title">Anchor · Inventory</div>
+            <p style="margin:0; font-size:13.5px; line-height:1.5;">69 → under 60 days. <b style="color:var(--ink)">ZF achieved a 15% reduction using the same approach.</b></p>
+          </div>
+          <div class="card tint-blue" data-reveal style="--i:5">
+            <div class="card-title">Anchor · Forecast</div>
+            <p style="margin:0; font-size:13.5px; line-height:1.5;">68% → 85–90%. <b style="color:var(--ink)">€30m+ in reduced waste and better allocation.</b></p>
+          </div>
+          <div class="card tint-green" data-reveal style="--i:6">
+            <div class="card-title">Anchor · IT estate</div>
+            <p style="margin:0; font-size:13.5px; line-height:1.5;">5 systems → 1 platform. <b style="color:var(--ink)">€25m+ from decommissioning alone.</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 11 — The €140m bridge ═══════════ -->
+    <section class="scene" data-act="III" data-title="Where €140m comes from" aria-label="Scene 11">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act III · The Value Case <span class="src">Deck slide 3</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">€140m a year, built from five parts.</h1>
+
+        <div class="cols cols-7-5" style="margin-top:22px;">
+          <div data-reveal style="--i:2">
+            <div class="section-head"><b>Annual value by lever</b><span>€m per year, steady state</span></div>
+            <div class="chart" role="img" aria-label="Annual value by lever: inventory 45 million euro, forecast accuracy 30 million, stockouts 25 million, IT consolidation 25 million, planner productivity 15 million. Total 140 million euro per year.">
+              <div class="bar-row" data-tip="Inventory (DIO)&#10;€45m+ per year&#10;IBP demand sensing + Autonomous SC reorder">
+                <div class="bar-label">Inventory<small>DIO 69 → &lt;60</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill green" style="--w:100%; --i:0"></div>
+                  <div class="bar-val">€45m+</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="Forecast accuracy&#10;€30m+ per year&#10;AI demand forecasting via IBP + Business Network">
+                <div class="bar-label">Forecast accuracy<small>68% → 85–90%</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill green" style="--w:67%; --i:1"></div>
+                  <div class="bar-val">€30m+</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="Stockouts&#10;€25m+ per year&#10;Predictive supply signals + automated safety stock">
+                <div class="bar-label">Stockouts<small>−30%</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill green" style="--w:56%; --i:2"></div>
+                  <div class="bar-val">€25m+</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="IT consolidation&#10;€25m+ per year&#10;R/3 decommission, Oracle retire, single S/4HANA + BTP">
+                <div class="bar-label">IT consolidation<small>5+ → 1 platform</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill green" style="--w:56%; --i:3"></div>
+                  <div class="bar-val">€25m+</div>
+                </div>
+              </div>
+              <div class="bar-row" data-tip="Planner productivity&#10;€15m+ per year&#10;Joule automation, exception-based work">
+                <div class="bar-label">Planner productivity<small>+40–80%</small></div>
+                <div class="bar-track">
+                  <div class="bar-fill green" style="--w:33%; --i:4"></div>
+                  <div class="bar-val">€15m+</div>
+                </div>
+              </div>
+              <div class="axis">
+                <div></div>
+                <div class="axis-scale"><span>€0m</span><span>€15m</span><span>€30m</span><span>€45m</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div data-reveal style="--i:3">
+            <div class="section-head"><b>Composition</b><span>Sums to €140m</span></div>
+            <div class="column-wrap">
+              <div class="column" aria-hidden="true">
+                <div class="column-seg" style="--h:32.1%; --i:0"></div>
+                <div class="column-seg" style="--h:21.4%; --i:1; --o:.88"></div>
+                <div class="column-seg" style="--h:17.9%; --i:2; --o:.76"></div>
+                <div class="column-seg" style="--h:17.9%; --i:3; --o:.64"></div>
+                <div class="column-seg" style="--h:10.7%; --i:4; --o:.52"></div>
+              </div>
+              <div class="column-key">
+                <div style="--h:32.1%"><span class="k-val">€45m</span> Inventory</div>
+                <div style="--h:21.4%"><span class="k-val">€30m</span> Forecast</div>
+                <div style="--h:17.9%"><span class="k-val">€25m</span> Stockouts</div>
+                <div style="--h:17.9%"><span class="k-val">€25m</span> IT estate</div>
+                <div style="--h:10.7%"><span class="k-val">€15m</span> Productivity</div>
+              </div>
+            </div>
+            <div style="margin-top:16px; padding-top:14px; border-top:2px solid var(--green);">
+              <div class="hero-num green">€140m</div>
+              <div style="font-family:var(--f-data); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-top:7px;">Steady-state annual savings</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cols cols-4" style="margin-top:30px; gap:2px;">
+          <div class="tile green" data-reveal style="--i:4">
+            <div class="lab">3-year cumulative</div>
+            <div class="hero-num green" style="font-size:clamp(26px,3vw,38px)">€420m+</div>
+            <div class="cap">Exceeds the €400m target</div>
+          </div>
+          <div class="tile" data-reveal style="--i:5">
+            <div class="lab">Return on investment</div>
+            <div class="hero-num blue" style="font-size:clamp(26px,3vw,38px)">2.7×</div>
+            <div class="cap">Over the three-year horizon</div>
+          </div>
+          <div class="tile" data-reveal style="--i:6">
+            <div class="lab">Payback period</div>
+            <div class="hero-num blue" style="font-size:clamp(26px,3vw,38px)">&lt;14 mo</div>
+            <div class="cap">Before the Year 2 commitment</div>
+          </div>
+          <div class="tile amber" data-reveal style="--i:7">
+            <div class="lab">Year 1 self-funding</div>
+            <div class="hero-num" style="font-size:clamp(26px,3vw,38px)">€100m</div>
+            <div class="cap">Funds the Year 2 journey</div>
+          </div>
+        </div>
+
+        <div class="foot-note" data-reveal style="--i:8">Bars scaled to the largest lever (€45m). Levers sum to €140m/yr; €420m is that run rate across three years. Figures as stated in slide 3.</div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 12 — How you pay ════════════════ -->
+    <section class="scene" data-act="III" data-title="How you pay" aria-label="Scene 12">
+      <div class="scene-inner">
+        <div class="eyebrow" data-reveal style="--i:0">Act III · The Value Case <span class="src">Deck slide 3</span></div>
+        <h1 class="scene-title wide" data-reveal style="--i:1">SAP only earns when WOW actually uses it.</h1>
+
+        <div class="formula" style="margin-top:24px; --i:2;" data-reveal>
+          cACV &nbsp;=&nbsp; MAU &nbsp;×&nbsp; Active Contract Value
+        </div>
+
+        <div class="cols cols-2" style="margin-top:26px;">
+          <div class="card" data-reveal style="--i:3">
+            <div class="card-title">What consumed ACV means</div>
+            <ul class="tickmarks">
+              <li>You pay for <b>active consumption</b>, not licences purchased</li>
+              <li>SAP earns <b>only when WOW uses and benefits</b></li>
+              <li>Shared success — <b>skin in the game until the subscription ends</b></li>
+            </ul>
+          </div>
+
+          <div class="card tint-blue" data-reveal style="--i:4">
+            <div class="card-title">Addressing Tanja's concerns</div>
+            <dl style="margin:0;">
+              <div class="qa"><dt>Upfront risk</dt><dd>Consumption-based — <b>pay as you adopt</b></dd></div>
+              <div class="qa"><dt>ROI uncertainty</dt><dd>SAP's revenue is <b>tied to YOUR adoption</b></dd></div>
+              <div class="qa"><dt>Lock-in fear</dt><dd><b>T4C clause</b> after the Year 1 milestone</dd></div>
+              <div class="qa"><dt>Slow payback</dt><dd><b>Year 1 savings fund Year 2</b></dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="card tint-green" style="margin-top:26px; --i:5;" data-reveal>
+          <p style="margin:0; font-size:15px; line-height:1.55;">
+            <b style="color:var(--ink)">The transformation pays for itself.</b>
+            The commercial model ensures SAP only succeeds when WOW succeeds. If the value isn't there
+            after Year 1, WOW can walk away.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 13 — The close ══════════════════ -->
+    <section class="scene" data-act="III" data-title="The close" aria-label="Scene 13">
+      <div class="scene-inner">
+        <div class="cover">
+          <div class="kicker" data-reveal style="--i:0">The ask</div>
+          <p class="closer" data-reveal style="--i:1">
+            We understand why you lost trust.<br />
+            We've changed how we work.<br />
+            Let us show you how — <em style="color:var(--blue); font-style:italic">starting with your supply chain.</em>
+          </p>
+
+          <div class="cols cols-3" style="margin-top:40px; gap:2px;">
+            <div class="tile" data-reveal style="--i:2">
+              <div class="lab">Skin in the game</div>
+              <div style="font-size:15.5px; color:var(--ink); font-weight:600; line-height:1.4;">SAP has skin in the game until the subscription ends</div>
+            </div>
+            <div class="tile" data-reveal style="--i:3">
+              <div class="lab">Aligned incentives</div>
+              <div style="font-size:15.5px; color:var(--ink); font-weight:600; line-height:1.4;">KPIs aligned to YOUR success, not deal size</div>
+            </div>
+            <div class="tile" data-reveal style="--i:4">
+              <div class="lab">Delivery</div>
+              <div style="font-size:15.5px; color:var(--ink); font-weight:600; line-height:1.4;">Best partner for implementation — SAP owns customer success</div>
+            </div>
+          </div>
+
+          <div class="cols cols-4" style="margin-top:30px; gap:2px;">
+            <div class="tile green" data-reveal style="--i:5">
+              <div class="lab">Annual</div>
+              <div class="hero-num green" style="font-size:clamp(24px,2.6vw,34px)">€140m</div>
+            </div>
+            <div class="tile green" data-reveal style="--i:6">
+              <div class="lab">3-year</div>
+              <div class="hero-num green" style="font-size:clamp(24px,2.6vw,34px)">€420m+</div>
+            </div>
+            <div class="tile" data-reveal style="--i:7">
+              <div class="lab">ROI</div>
+              <div class="hero-num blue" style="font-size:clamp(24px,2.6vw,34px)">2.7×</div>
+            </div>
+            <div class="tile" data-reveal style="--i:8">
+              <div class="lab">Payback</div>
+              <div class="hero-num blue" style="font-size:clamp(24px,2.6vw,34px)">&lt;14 mo</div>
+            </div>
+          </div>
+
+          <div class="foot-note" data-reveal style="--i:9">SAP Confidential · WOW Automotive Executive Pitch</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <div class="controls">
+      <span class="counter"><b id="cNow">01</b> / <span id="cTotal">13</span></span>
+      <button class="nav" id="prevBtn" aria-label="Previous scene">‹</button>
+      <button class="nav" id="nextBtn" aria-label="Next scene">›</button>
+    </div>
+
+    <!-- Speaker notes -->
+    <aside class="notes" id="notes" aria-live="polite" aria-label="Talk track">
+      <h5 id="noteHead">Talk track</h5>
+      <div class="note-body" id="noteBody"></div>
+    </aside>
+
+  </main>
+</div>
+
+<div id="tip" role="status"></div>
+<div class="sr" aria-live="polite" id="live"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var scenes = Array.prototype.slice.call(document.querySelectorAll(".scene"));
+  var total = scenes.length;
+  var idx = 0;
+
+  var ACTS = { I: "Act I — Trust", II: "Act II — The work", III: "Act III — The value" };
+
+  /* Talk track, per scene — from the deck's speaker notes. */
+  var NOTES = [
+    "OPENING (15s): \"Two years ago, we proposed a Cloud ERP transformation. It didn't land — too much upfront risk, no clear phased approach, and no measurable link to your €400m savings target. We own that.\"\n\nThree acts, roughly 90 seconds each: trust, then the work, then the money.",
+    "WHY TRUST WAS LOST (20s):\n• Our previous proposal asked for too much commitment too early.\n• Meanwhile, Salesforce also failed on the CRM rollout — so WOW is cautious with ALL vendors.\n• No clear business outcome was tied to the investment.\n\nDon't rush this. Naming the failure is what buys permission for the rest.",
+    "WHAT SAP HAS IMPROVED (20s):\n• RISE with SAP: structured, phased, de-risked.\n• SAP Activate: milestone gates — you see value before committing further.\n• Business AI embedded in processes (Joule, autonomous agents) — not a separate tool.\n• cACV: consumption-based pricing, not bulk licensing.\n• SAP's KPIs now tied to customer success, not deal closure.",
+    "TIMELINE (20s): Walk through the three-year timeline. Emphasise: \"You fund Year 2 from Year 1 savings. No additional ask.\"",
+    "INDUSTRY REFERENCES (15s): \"This isn't theoretical. Continental, ZF and SLB have done this with measurable results.\"\n\nKEY MESSAGE: \"We understand why you lost trust. We've changed how we work. Let us show you how — starting with your supply chain.\"",
+    "OPENING (10s): \"CIO Alina said: 'No more dashboards no one uses.' Here's what we're doing differently.\"\n\nTHE PROBLEM (20s): \"Your supply chain planner today: 3 systems, manual data aggregation, reactive to disruptions, 69 inventory days. 80% of their time on tasks that AI can handle.\"",
+    "THE TRANSFORMATION (25s): \"With Joule as the single interface, IBP for forecasting, Autonomous SC for routine decisions — the planner focuses on strategy, not data gathering. Supplier risks surface before they hit production.\"",
+    "SOLUTION STACK (20s): Walk through the five components briefly — each serves a specific function in the planner's workflow.",
+    "GOVERNANCE (15s): \"AI handles the routine within guardrails. Humans control exceptions, strategic decisions, high-value approvals. Every recommendation is explainable. The system learns from overrides.\"\n\nTRANSITION: \"So what's the measurable impact, and how do we pay for it?\"",
+    "OPENING (10s): \"Tanja, let me show you exactly where the numbers come from and why this is different from what we proposed before.\"\n\nOPERATIONAL IMPACT (30s):\n• \"Inventory: 69 days today → under 60. That's €45m+ annually from IBP and automated reorder. ZF achieved 15% reduction using the same approach.\"\n• \"Forecast accuracy: 68% → 85-90%. AI demand sensing nets €30m+ in reduced waste and better allocation.\"\n• \"Planner productivity: 40-80% improvement as planners shift from data gathering to strategy. €15m+ in labour reallocation.\"\n• \"Stockouts down 30% through predictive signals — €25m+ in protected revenue.\"\n• \"IT consolidation: 5 systems to 1 platform — €25m+ in decommission savings.\"",
+    "THE NUMBERS (20s): \"Total: €140m annually at steady state. €420m cumulative over three years — exceeding your €400m target by 5%. 2.7x ROI. Payback in under 14 months.\"",
+    "COMMERCIAL MODEL (20s): \"And here's how you pay for it: cACV — consumed ACV. You pay only for what you actively use. SAP earns when you adopt. Year 1 savings of €100m fund the Year 2 journey. No additional ask. And if after Year 1 you're not seeing value — T4C clause, you can walk away.\"",
+    "CLOSE (10s): \"The transformation pays for itself. The commercial model ensures SAP only succeeds when WOW succeeds. That's skin in the game.\""
+  ];
+
+  /* ── Build the rail ─────────────────────────────── */
+  var railTicks = document.getElementById("railTicks");
+  var lastAct = null;
+  var tickEls = [];
+
+  scenes.forEach(function (s, i) {
+    var act = s.getAttribute("data-act");
+    if (act !== lastAct) {
+      var lab = document.createElement("div");
+      lab.className = "act-label";
+      lab.textContent = ACTS[act];
+      railTicks.appendChild(lab);
+      lastAct = act;
+    }
+    var b = document.createElement("button");
+    b.className = "tick";
+    b.type = "button";
+    b.innerHTML = '<span class="n">' + pad(i + 1) + '</span><span class="t"></span>';
+    b.querySelector(".t").textContent = s.getAttribute("data-title");
+    b.addEventListener("click", function () { go(i); closeRail(); });
+    railTicks.appendChild(b);
+    tickEls.push(b);
+  });
+
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+  /* ── Navigation ─────────────────────────────────── */
+  var cNow = document.getElementById("cNow");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var progressFill = document.getElementById("progressFill");
+  var noteBody = document.getElementById("noteBody");
+  var noteHead = document.getElementById("noteHead");
+  var live = document.getElementById("live");
+
+  document.getElementById("cTotal").textContent = String(total);
+
+  function go(n, skipHash) {
+    n = Math.max(0, Math.min(total - 1, n));
+    if (n === idx && scenes[n].classList.contains("is-active")) { return; }
+    scenes[idx].classList.remove("is-active");
+    idx = n;
+    var s = scenes[idx];
+    s.classList.add("is-active");
+    s.scrollTop = 0;
+
+    tickEls.forEach(function (t, i) { t.setAttribute("aria-current", i === idx ? "true" : "false"); });
+    cNow.textContent = pad(idx + 1);
+    progressFill.style.width = ((idx + 1) / total * 100) + "%";
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+
+    noteHead.textContent = "Talk track · " + pad(idx + 1) + " " + s.getAttribute("data-title");
+    noteBody.textContent = NOTES[idx] || "—";
+
+    live.textContent = "Scene " + (idx + 1) + " of " + total + ": " + s.getAttribute("data-title");
+
+    var t = tickEls[idx];
+    if (t && t.scrollIntoView) { t.scrollIntoView({ block: "nearest" }); }
+
+    if (!skipHash) {
+      try { history.replaceState(null, "", "#s" + (idx + 1)); } catch (e) {}
+    }
+  }
+
+  function next() { go(idx + 1); }
+  function prev() { go(idx - 1); }
+
+  nextBtn.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+  prevBtn.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
+
+  /* Click on scene background advances; content and controls do not. */
+  var ADVANCE_ON = ["scene", "scene-inner", "cover", "cols", "stage"];
+  document.getElementById("stage").addEventListener("click", function (e) {
+    var t = e.target;
+    if (!(t instanceof Element)) { return; }
+    if (t.closest("button, a, input, .controls, .notes, .card, .node, .phase, .tile, table, .chart, .gauge, .split, .track, .formula, .quote, .ledger, .tickmarks")) { return; }
+    var isBg = ADVANCE_ON.some(function (c) { return t.classList.contains(c); });
+    if (isBg) { next(); }
+  });
+
+  /* Keyboard */
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) { return; }
+    var tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") { return; }
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": case " ": e.preventDefault(); next(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prev(); break;
+      case "Home": e.preventDefault(); go(0); break;
+      case "End": e.preventDefault(); go(total - 1); break;
+      case "n": case "N": toggleNotes(); break;
+      case "Escape": closeNotes(); closeRail(); break;
+    }
+  });
+
+  /* Swipe */
+  var tx = 0, ty = 0;
+  document.getElementById("stage").addEventListener("touchstart", function (e) {
+    tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  document.getElementById("stage").addEventListener("touchend", function (e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6) { dx < 0 ? next() : prev(); }
+  }, { passive: true });
+
+  /* ── Talk track drawer ──────────────────────────── */
+  var notes = document.getElementById("notes");
+  var notesBtn = document.getElementById("notesBtn");
+  function toggleNotes() { notes.classList.contains("open") ? closeNotes() : openNotes(); }
+  function openNotes() { notes.classList.add("open"); notesBtn.setAttribute("aria-pressed", "true"); }
+  function closeNotes() { notes.classList.remove("open"); notesBtn.setAttribute("aria-pressed", "false"); }
+  notesBtn.addEventListener("click", toggleNotes);
+
+  /* ── Theme toggle ───────────────────────────────── */
+  var themeBtn = document.getElementById("themeBtn");
+  themeBtn.addEventListener("click", function () {
+    var root = document.documentElement;
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+  });
+
+  /* ── Mobile rail ────────────────────────────────── */
+  var rail = document.getElementById("rail");
+  var menuBtn = document.getElementById("menuBtn");
+  function closeRail() { rail.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+  menuBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = rail.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  /* ── Chart tooltips ─────────────────────────────── */
+  var tip = document.getElementById("tip");
+  document.addEventListener("mouseover", function (e) {
+    var el = e.target instanceof Element ? e.target.closest("[data-tip]") : null;
+    if (!el) { return; }
+    tip.textContent = el.getAttribute("data-tip");
+    tip.classList.add("on");
+    place(e);
+  });
+  document.addEventListener("mousemove", function (e) {
+    if (tip.classList.contains("on")) { place(e); }
+  });
+  document.addEventListener("mouseout", function (e) {
+    var el = e.target instanceof Element ? e.target.closest("[data-tip]") : null;
+    if (el) { tip.classList.remove("on"); }
+  });
+  function place(e) {
+    tip.style.left = Math.min(window.innerWidth - 20, Math.max(20, e.clientX)) + "px";
+    tip.style.top = (e.clientY - 14) + "px";
+  }
+
+  /* ── Deep link ──────────────────────────────────── */
+  window.addEventListener("hashchange", function () {
+    var h = /^#s(\d+)$/.exec(window.location.hash || "");
+    if (h) { go(parseInt(h[1], 10) - 1, true); }
+  });
+
+  var m = /^#s(\d+)$/.exec(window.location.hash || "");
+  var start = m ? Math.max(0, Math.min(total - 1, parseInt(m[1], 10) - 1)) : 0;
+  scenes.forEach(function (s) { s.classList.remove("is-active"); });
+  idx = start === 0 ? 0 : start;
+  scenes[idx].classList.add("is-active");
+  // Prime all derived UI for the starting scene.
+  (function init() {
+    tickEls.forEach(function (t, i) { t.setAttribute("aria-current", i === idx ? "true" : "false"); });
+    cNow.textContent = pad(idx + 1);
+    progressFill.style.width = ((idx + 1) / total * 100) + "%";
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    noteHead.textContent = "Talk track · " + pad(idx + 1) + " " + scenes[idx].getAttribute("data-title");
+    noteBody.textContent = NOTES[idx] || "—";
+  })();
+})();
+</script>
+</body>
+</html>
