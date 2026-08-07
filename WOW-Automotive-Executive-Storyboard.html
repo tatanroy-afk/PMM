@@ -428,6 +428,27 @@ h1.scene-title.wide { max-width: 30ch; }
   padding-top: 3px;
 }
 .ledger.neg .idx { color: var(--amber); }
+.ledger li.pivot {
+  background: var(--blue-wash);
+  border-radius: 3px;
+  margin: 2px -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.ledger.neg li.pivot .idx { color: var(--blue); }
+.pivot-tag {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--f-data);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue-ink);
+  border: 1px solid color-mix(in srgb, var(--blue) 35%, transparent);
+  border-radius: 2px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
 .ledger.pos .idx { color: var(--blue); }
 .ledger .body { color: var(--ink-2); font-size: 14.5px; line-height: 1.5; }
 .ledger .body b { color: var(--ink); font-weight: 600; }
@@ -1270,17 +1291,18 @@ table.delta .how { font-size: 12.5px; }
         <h1 class="scene-title" data-reveal style="--i:1">We own that.</h1>
         <p class="deck-lede" data-reveal style="--i:2">
           Before asking for anything, the honest account of why the last proposal failed —
-          and why WOW is now cautious with every vendor, not just SAP.
+          including the part SAP finds least comfortable: our own commercial model.
         </p>
 
         <div class="cols cols-7-5">
           <div data-reveal style="--i:3">
-            <div class="section-head"><b>Why trust was lost</b><span>Four failures</span></div>
+            <div class="section-head"><b>Why trust was lost</b><span>Five points</span></div>
             <ul class="ledger neg">
               <li><span class="idx">01</span><span class="body">Previous ERP proposal <b>lacked a phased approach</b> — too much upfront risk in a single commitment.</span></li>
               <li><span class="idx">02</span><span class="body"><b>Implementation delays</b> eroded confidence in SAP's ability to deliver.</span></li>
-              <li><span class="idx">03</span><span class="body">The <b>Salesforce CRM rollout also failed</b> — WOW is cautious with all vendors, not only SAP.</span></li>
-              <li><span class="idx">04</span><span class="body"><b>No clear link</b> between the investment and a measurable business outcome.</span></li>
+              <li><span class="idx">03</span><span class="body"><b>Complex, non-transparent licensing</b> created confusion and reduced confidence.</span></li>
+              <li class="pivot"><span class="idx">04</span><span class="body">The <b>need for simpler commercial models</b> to rebuild trust — cACV is the answer.<span class="pivot-tag">Answered in Act III</span></span></li>
+              <li><span class="idx">05</span><span class="body"><b>No clear link</b> between the investment and a measurable business outcome.</span></li>
             </ul>
           </div>
 
@@ -1307,7 +1329,7 @@ table.delta .how { font-size: 12.5px; }
         <h1 class="scene-title wide" data-reveal style="--i:1">Five things are different this time.</h1>
         <p class="deck-lede" data-reveal style="--i:2">
           Not a better pitch — a different operating model. Each change maps directly to one of the
-          four reasons the last proposal failed.
+          five points WOW raised.
         </p>
 
         <div class="cols cols-5" style="gap:2px; margin-top:26px;">
@@ -1348,15 +1370,17 @@ table.delta .how { font-size: 12.5px; }
             <p style="margin:14px 0 0; font-size:14.5px; line-height:1.55;">
               That reverses the incentive that produced the last proposal. A licence sale rewards the
               size of the signature; a consumption model rewards adoption — which is the same thing
-              WOW is trying to buy.
+              WOW is trying to buy. It is also the direct fix for the licensing complexity WOW named:
+              one meter, one number, visible monthly.
             </p>
           </div>
           <div class="card" data-reveal style="--i:9">
             <div class="card-title">What this answers</div>
             <ul class="tickmarks">
-              <li>Phasing replaces the all-at-once ask <b>(failure 01)</b></li>
-              <li>Milestone gates make delivery visible <b>(failure 02)</b></li>
-              <li>Outcome-linked KPIs replace deal-size KPIs <b>(failure 04)</b></li>
+              <li>Phasing replaces the all-at-once ask <b>(point 01)</b></li>
+              <li>Milestone gates make delivery visible <b>(point 02)</b></li>
+              <li>cACV replaces opaque licensing <b>(points 03 &amp; 04)</b></li>
+              <li>Outcome-linked KPIs replace deal-size KPIs <b>(point 05)</b></li>
             </ul>
           </div>
         </div>
@@ -1413,44 +1437,42 @@ table.delta .how { font-size: 12.5px; }
 
         <div class="cols cols-7-5">
           <div data-reveal style="--i:2">
+            <div class="card tint-blue" style="margin-bottom:20px;">
+              <div class="card-title">Robert Bosch · the closest match to Year 1</div>
+              <p style="margin:0; font-size:14.5px; line-height:1.55;">
+                <b style="color:var(--ink)">RISE with SAP + BTP integration across global automotive operations.</b>
+                That is the exact architecture proposed here — BTP bridging the existing estate, RISE
+                carrying the transformation. Bosch has already run it at global automotive scale.
+              </p>
+            </div>
+
             <div class="section-head"><b>Measured improvement</b><span>Reported reduction</span></div>
-            <div class="chart" role="img" aria-label="Reported improvements: SLB 37 percent DIO reduction, Continental 30 percent IT cost reduction, ZF Friedrichshafen 15 percent inventory days reduction.">
-              <div class="bar-row" data-tip="SLB (Schlumberger)&#10;37% DIO reduction&#10;via SAP IBP + AI demand sensing">
-                <div class="bar-label">SLB<small>DIO reduction</small></div>
-                <div class="bar-track">
-                  <div class="bar-fill" style="--w:100%; --i:0"></div>
-                  <div class="bar-val">−37%</div>
-                </div>
-              </div>
-              <div class="bar-row" data-tip="Continental AG&#10;30% IT cost reduction&#10;S/4HANA across 60+ plants">
+            <div class="chart" role="img" aria-label="Reported reductions: Continental AG 30 percent IT cost reduction, ZF Friedrichshafen 15 percent reduction in inventory days.">
+              <div class="bar-row" data-tip="Continental AG&#10;30% IT cost reduction&#10;S/4HANA transformation across 60+ plants">
                 <div class="bar-label">Continental AG<small>IT cost reduction</small></div>
                 <div class="bar-track">
-                  <div class="bar-fill" style="--w:81%; --i:1"></div>
+                  <div class="bar-fill" style="--w:100%; --i:0"></div>
                   <div class="bar-val">−30%</div>
                 </div>
               </div>
               <div class="bar-row" data-tip="ZF Friedrichshafen&#10;15% reduction in inventory days&#10;RISE with SAP deployment">
                 <div class="bar-label">ZF Friedrichshafen<small>Inventory days</small></div>
                 <div class="bar-track">
-                  <div class="bar-fill" style="--w:41%; --i:2"></div>
+                  <div class="bar-fill" style="--w:50%; --i:1"></div>
                   <div class="bar-val">−15%</div>
                 </div>
               </div>
               <div class="axis">
                 <div></div>
-                <div class="axis-scale"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>37%</span></div>
+                <div class="axis-scale"><span>0%</span><span>10%</span><span>20%</span><span>30%</span></div>
               </div>
             </div>
           </div>
 
           <div class="stack" data-reveal style="--i:3">
             <div class="card">
-              <div class="card-title">SLB · Schlumberger</div>
-              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">37% DIO reduction via SAP IBP + AI demand sensing — the same stack proposed for WOW.</p>
-            </div>
-            <div class="card">
               <div class="card-title">Continental AG</div>
-              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">S/4HANA across 60+ plants, 30% IT cost reduction. Automotive scale, automotive complexity.</p>
+              <p style="margin:0; font-size:13.5px; color:var(--ink-3);">S/4HANA transformation across 60+ plants, 30% IT cost reduction. Automotive scale, automotive complexity.</p>
             </div>
             <div class="card">
               <div class="card-title">ZF Friedrichshafen</div>
@@ -1459,7 +1481,7 @@ table.delta .how { font-size: 12.5px; }
           </div>
         </div>
 
-        <div class="foot-note" data-reveal style="--i:4">Bars are scaled to the largest reported reduction (37%). Figures as stated in slide 1.</div>
+        <div class="foot-note" data-reveal style="--i:4">Bars are scaled to the largest reported reduction (30%). Bosch is cited in slide 1 for deployment scope, not a published percentage. Figures as stated in slide 1.</div>
       </div>
     </section>
 
@@ -1843,7 +1865,7 @@ table.delta .how { font-size: 12.5px; }
           </div>
           <div class="tile" data-reveal style="--i:6">
             <div class="lab">Payback period</div>
-            <div class="hero-num blue" style="font-size:clamp(26px,3vw,38px)">&lt;14 mo</div>
+            <div class="hero-num blue" style="font-size:clamp(26px,3vw,38px)">&lt;14mo</div>
             <div class="cap">Before the Year 2 commitment</div>
           </div>
           <div class="tile amber" data-reveal style="--i:7">
@@ -1939,7 +1961,7 @@ table.delta .how { font-size: 12.5px; }
             </div>
             <div class="tile" data-reveal style="--i:8">
               <div class="lab">Payback</div>
-              <div class="hero-num blue" style="font-size:clamp(24px,2.6vw,34px)">&lt;14 mo</div>
+              <div class="hero-num blue" style="font-size:clamp(24px,2.6vw,34px)">&lt;14mo</div>
             </div>
           </div>
 
@@ -1980,10 +2002,10 @@ table.delta .how { font-size: 12.5px; }
   /* Talk track, per scene — from the deck's speaker notes. */
   var NOTES = [
     "OPENING (15s): \"Two years ago, we proposed a Cloud ERP transformation. It didn't land — too much upfront risk, no clear phased approach, and no measurable link to your €400m savings target. We own that.\"\n\nThree acts, roughly 90 seconds each: trust, then the work, then the money.",
-    "WHY TRUST WAS LOST (20s):\n• Our previous proposal asked for too much commitment too early.\n• Meanwhile, Salesforce also failed on the CRM rollout — so WOW is cautious with ALL vendors.\n• No clear business outcome was tied to the investment.\n\nDon't rush this. Naming the failure is what buys permission for the rest.",
+    "WHY TRUST WAS LOST (20s):\n• Our previous proposal asked for too much commitment too early.\n• Implementation delays eroded confidence in SAP's ability to deliver.\n• Complex, non-transparent licensing created confusion and reduced confidence.\n• WOW needs simpler commercial models to rebuild trust — cACV is the answer.\n• No clear business outcome was tied to the investment.\n\nDon't rush this. Naming the failure is what buys permission for the rest. Point 04 is the hand-off to Act III — say it, then move on.",
     "WHAT SAP HAS IMPROVED (20s):\n• RISE with SAP: structured, phased, de-risked.\n• SAP Activate: milestone gates — you see value before committing further.\n• Business AI embedded in processes (Joule, autonomous agents) — not a separate tool.\n• cACV: consumption-based pricing, not bulk licensing.\n• SAP's KPIs now tied to customer success, not deal closure.",
     "TIMELINE (20s): Walk through the three-year timeline. Emphasise: \"You fund Year 2 from Year 1 savings. No additional ask.\"",
-    "INDUSTRY REFERENCES (15s): \"This isn't theoretical. Continental, ZF and SLB have done this with measurable results.\"\n\nKEY MESSAGE: \"We understand why you lost trust. We've changed how we work. Let us show you how — starting with your supply chain.\"",
+    "INDUSTRY REFERENCES (15s): \"This isn't theoretical. Bosch, Continental and ZF have done this with measurable results.\" Lead with Bosch — RISE plus BTP is exactly what we are proposing for Year 1.\n\nKEY MESSAGE: \"We understand why you lost trust. We've changed how we work. Let us show you how — starting with your supply chain.\"",
     "OPENING (10s): \"CIO Alina said: 'No more dashboards no one uses.' Here's what we're doing differently.\"\n\nTHE PROBLEM (20s): \"Your supply chain planner today: 3 systems, manual data aggregation, reactive to disruptions, 69 inventory days. 80% of their time on tasks that AI can handle.\"",
     "THE TRANSFORMATION (25s): \"With Joule as the single interface, IBP for forecasting, Autonomous SC for routine decisions — the planner focuses on strategy, not data gathering. Supplier risks surface before they hit production.\"",
     "SOLUTION STACK (20s): Walk through the five components briefly — each serves a specific function in the planner's workflow.",
